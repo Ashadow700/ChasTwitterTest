@@ -1,0 +1,100 @@
+Introduction:
+This is a very simple demo API intended to function as a basic twitter clone.
+
+---------------------------------------------------------------------------------------------------------
+Preparation:
+
+This program can only be run on a machine with Java 9 or higher installed.
+
+The program assumes that the user has already set up a MySql database that it can interact with. When the system starts
+it will set up the necessary tables in the database for it to interact with.
+
+
+It is also possible to bypass step 2 and instead also the program to create the table by going to the 'application.properties'
+file and changing the line 'spring.jpa.hibernate.ddl-auto=none' to 'spring.jpa.hibernate.ddl-auto=update'.
+
+---------------------------------------------------------------------------------------------------------
+Starting the program:
+
+In order to start the program, the following parameters must be set via the terminal. If the parameters are not defined,
+the default values will be used instead.
+
+server.port:                The port which the program should run on.               Default: 8080
+spring.datasource.url:      The url of the database                                 Default: jdbc:mysql://localhost:3306/my_database
+spring.datasource.username: A user with correct access rights to the database.      Default: root
+spring.datasource.password: password                                                Default: password
+
+Run with maven:
+  - Open terminal
+  - Navigate to the project root folder, which should be ./.ChasTwitterTest
+  - Execute the following command. Change the parameters if necessary
+    mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8080,--spring.datasource.url=jdbc:mysql://localhost:3306/my_database,--spring.datasource.username=root,--spring.datasource.password=password
+
+Execute with JAR file:
+  - Open terminal
+  - Navigate to the folder with the JAR file ChasTwitterTest-1.0.jar, which should be ./ChasTwitterTest
+  - Execute the following command. Change the parameters if necessary
+    java -jar ChasTwitterTest-1.0.jar --server.port=8080 --spring.datasource.url=jdbc:mysql://localhost:3306/my_database --spring.datasource.username=root --spring.datasource.password=password
+
+---------------------------------------------------------------------------------------------------------
+Available requests:
+
+POST student:
+    Inserts a new student into the database
+    URL: POST <host>:<port>/student/post
+    Body:
+    {
+      "id": <id of Student>
+      "name": <name of Student>
+      "email": <email of Student>
+    }
+    Example:
+        POST localhost:8080/student/
+        {
+          "id": "3"
+          "name": "Henrik"
+          "email": "Henrik@gmail.com"
+        }
+
+GET student:
+    Fetches a student with specified id
+    URL: GET <host>:<port>/student/get/<id>
+    Example: GET localhost:8080/student/get/3
+
+GET all students:
+    Fetches a list of all students
+    URL: GET <host>:<port>/student/get/all
+    Example: GET localhost:8080/student/get/all
+
+PUT student:
+    Updates a student
+    URL: PUT <host>:<port>/student/update
+    Body:
+    {
+      "id": <id of Student>
+      "name": <name of Student>
+      "email": <email of Student>
+    }
+    Example:
+        PUT http://localhost:8080/student/update
+        {
+          "id": "3"
+          "name": "Henrik"
+          "email": "Henrik@gmail.com"
+        }
+
+DELETE student
+    Deletes a student from the database
+    URL: DELETE <host>:<port>/student/delete/<id>
+    Example: DELETE http://localhost:8080/student/delete/1
+
+
+---------------------------------------------------------------------------------------------------------
+Known issues:
+
+The system currently is a hacker's dream as it provides virtually no security of any kind. I did not implement these
+in order to save time and because the tests specification did not ask for additional security features.
+
+The worst offenders are the following:
+  - Passwords are currently stored in plaintext as opposed to being encrypted. Unacceptable in a production environment
+  - All Apis are wide open and don't check the credentials of the client. Again, unacceptable for any real system.
