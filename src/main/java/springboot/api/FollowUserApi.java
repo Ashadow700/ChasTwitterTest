@@ -55,9 +55,8 @@ public class FollowUserApi {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
 
-
         if(userAlreadyFollows(followedUser)) {
-            String message = "Users " + followedUser.getUsername() + " already follows " + followedUser.getFollowedUsername() + ". Database was not altered";
+            String message = "User " + followedUser.getUsername() + " already follows " + followedUser.getFollowedUsername() + ". Database was not altered";
             LOG.warn(message);
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }

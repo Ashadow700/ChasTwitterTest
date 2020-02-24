@@ -32,7 +32,7 @@ public class TweetApi {
     private final static Logger LOG = LoggerFactory.getLogger(TweetApi.class);
 
     @PostMapping(path="/post")
-    public ResponseEntity<String> postTweet(@RequestBody @Valid Tweet tweet){
+    public ResponseEntity<String> postTweet(@RequestBody @Valid Tweet tweet) {
 
         LOG.info("Received POST Tweet request with for username " + tweet.getUsername());
 
@@ -47,7 +47,7 @@ public class TweetApi {
     }
 
     @GetMapping(path="/get/all")
-    public ResponseEntity<Object> getAllTweets(){
+    public ResponseEntity<Object> getAllTweets() {
 
         LOG.info("Received GET all Tweets request");
 
@@ -62,7 +62,7 @@ public class TweetApi {
     would make the code more complex then it needs to be
      */
     @GetMapping(path="/get/{username}")
-    public ResponseEntity<Object> getTweetsFromUser(@PathVariable String username){
+    public ResponseEntity<Object> getTweetsFromUser(@PathVariable String username) {
 
         LOG.info("Received GET all Tweets request for user " + username);
 
@@ -80,7 +80,7 @@ public class TweetApi {
 
 
     @GetMapping(path="/get/FollowedUsersTweets/{username}")
-    public ResponseEntity<Object> getTweetsFromFollowedUsers(@PathVariable String username){
+    public ResponseEntity<Object> getTweetsFromFollowedUsers(@PathVariable String username) {
 
         LOG.info("Received GET all Tweets request for user " + username);
 

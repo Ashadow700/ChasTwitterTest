@@ -43,7 +43,7 @@ public class UserApi {
     }
 
     @GetMapping(path="/get/{username}")
-    public ResponseEntity<Object> getUser(@PathVariable String username){
+    public ResponseEntity<Object> getUser(@PathVariable String username) {
 
         LOG.info("Received Get  user request with for username " + username);
 

@@ -25,7 +25,7 @@ public class LoginApi {
     private final static Logger LOG = LoggerFactory.getLogger(LoginApi.class);
 
     @GetMapping
-    public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password){
+    public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
 
         LOG.info("Login request for username " + username);
 
