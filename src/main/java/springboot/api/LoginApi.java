@@ -24,6 +24,11 @@ public class LoginApi {
 
     private final static Logger LOG = LoggerFactory.getLogger(LoginApi.class);
 
+    /*
+    This is obviously not a secure login API. To make a proper login API, one needs to generate and return a Web Token.
+    Because all the other APIs are wide open anyway however as security was not a requirement for the test,
+    I figured I could save some time by not implementing Web Token functionality
+     */
     @GetMapping
     public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
 
