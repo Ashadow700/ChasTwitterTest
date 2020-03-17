@@ -169,13 +169,6 @@ The worst offenders are the following:
   - Passwords are currently stored in plaintext as opposed to being encrypted. Unacceptable in a production environment
   - All Apis are wide open and don't check the credentials of the client. Again, unacceptable for any real system.
 
-When the GUI is opened in a browser, it's CORS policy may prevent it from accessing the API. To circumvent this problem,
-a possible solution is to install a plugin to the browser that temporarily disables the CORS policy.
-Another solution is creating a shortcut to Google Chrome with CORS disabled:
-  - Right click on desktop, add new shortcut
-  - Add the target as "[PATH_TO_CHROME]\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
-  - Click OK.
-
 If this was a full production system, the functionality APIs should be expanded into full CRUD APIs (CREATE,
 READ, UPDATE, DELETE). For example, at the moment it is not possible to delete or update any users. I did
 not implement these to save time as they were not needed to complete the test
